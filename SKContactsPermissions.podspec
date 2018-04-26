@@ -5,7 +5,7 @@ s.platform = :ios
 s.swift_version = '4.0'
 s.ios.deployment_target = '10.0'
 s.name = "SKContactsPermissions"
-s.summary = "SKContactsPermissions allows you to check Camera permissions"
+s.summary = "SKContactsPermissions allows you to check Contacts permissions"
 s.requires_arc = true
 
 # 2
