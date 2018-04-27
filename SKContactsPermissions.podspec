@@ -9,7 +9,7 @@ s.summary = "SKContactsPermissions allows you to check Contacts permissions"
 s.requires_arc = true
 
 # 2
-s.version = "0.0.1"
+s.version = "0.0.2"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
@@ -25,7 +25,7 @@ s.homepage = "https://github.com/sjsoad/ContactsPermissions"
 s.source = { :git => "https://github.com/sjsoad/ContactsPermissions.git", :tag => "#{s.version}"}
 
 # 7
-s.framework = "UIKit"
+s.frameworks = "AddressBook", "Contacts"
 
 # 8
 s.source_files = "ContactsPermissions/**/*.{swift}"
