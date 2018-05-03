@@ -11,14 +11,8 @@ import Contacts
 import AddressBook
 import SKServicePermissions
 
-open class ContactsPermissions: NSObject {
+open class ContactsPermissions: NSObject, ServicePermissions {
 
-}
-
-// MARK: - ServicePermissions -
-
-extension ContactsPermissions: ServicePermissions {
-    
     public typealias PermissionsState = CNAuthorizationStatus
     
     public func requestPermissions(handler: @escaping (PermissionsState) -> Void) {
@@ -31,5 +25,5 @@ extension ContactsPermissions: ServicePermissions {
     public func permissionsState() -> PermissionsState {
         return CNContactStore.authorizationStatus(for: .contacts)
     }
-
+    
 }
