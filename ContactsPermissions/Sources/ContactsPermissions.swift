@@ -9,16 +9,24 @@
 import UIKit
 import Contacts
 import AddressBook
-import SKServicePermissions
 
-open class ContactsPermissions: NSObject, ServicePermissions {
+public protocol ContactsPermissions {
+    
+    typealias PermissionsState = CNAuthorizationStatus
+    
+    func requestPermissions(handler: @escaping (PermissionsState) -> Void)
+    func permissionsState() -> PermissionsState
+    
+}
 
-    public typealias PermissionsState = CNAuthorizationStatus
+open class DefaultContactsPermissions: ContactsPermissions {
+    
+    public init() {}
     
     public func requestPermissions(handler: @escaping (PermissionsState) -> Void) {
-        CNContactStore().requestAccess(for: .contacts) { [weak self] _, _ in
-            guard let `self` = self else { return }
-            DispatchQueue.main.async {
+        CNContactStore().requestAccess(for: .contacts) { _, _ in
+            DispatchQueue.main.async { [weak self] in
+                guard let `self` = self else { return }
                 handler(self.permissionsState())
             }
         }
